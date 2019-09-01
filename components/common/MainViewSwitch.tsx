@@ -1,7 +1,7 @@
 /**
  * MainViewSwitch.tsx
- * - ルータ導入確認の前に、単純な条件付きレンダーでページ繊維をテストしてみる
- * - TODO: ルータ導入検証
+ * - ルータ導入の前に、単純な条件付きレンダーでページ遷移をテスト
+ * - TODO: ルータの導入意義を確認、検証
  */
 import React from 'react';
 import {
@@ -10,9 +10,8 @@ import {
 	Text,
 } from 'react-native'
 import BottomButtons, { ButtonKind } from './BottomButtons';
-import ActorMasterList from './ActorMasterList';
-import Header from './Header';
-import Actors from '../src/Data/masterData/Actor/Actors';
+import Actors from '../../src/Data/masterData/Actor/Actors';
+import TopPage from '../pages/TopPage';
 
 interface IProps{
 	viewState: ViewState
@@ -41,13 +40,12 @@ export default (props:IProps) => {
 
 		case ViewState.Top:
 			return (
-				<View style={styles.main}>
-					<Header style={styles.header} statusText={props.statusText} />
-					<ActorMasterList actors={props.actors} />
-					<BottomButtons
-						style={styles.bottomButtons}
-						onClicked={props.onClicked} />
-				</View>
+				<TopPage
+					bottomFloaterStyle={styles.bottomFloater}
+					actors={props.actors}
+					statusText={props.statusText}
+					onClicked={props.onClicked}
+				/>
 			)
 		
 
@@ -56,7 +54,7 @@ export default (props:IProps) => {
 				<View style={styles.nowloading}>
 					<Text>TEST1</Text>
 					<BottomButtons
-						style={styles.bottomButtons}
+						style={styles.bottomFloater}
 						onClicked={props.onClicked} />
 				</View>
 			)
@@ -66,7 +64,7 @@ export default (props:IProps) => {
 				<View style={styles.nowloading}>
 					<Text>TEST2</Text>
 					<BottomButtons
-						style={styles.bottomButtons}
+						style={styles.bottomFloater}
 						onClicked={props.onClicked} />
 				</View>
 			)
@@ -85,29 +83,15 @@ export default (props:IProps) => {
 
 const styles = StyleSheet.create({
 
-	main: {
-		flex: 1,
-	},
-
 	nowloading: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
 
-	header: {
-		flex: 1,
-	},
-
-
-	listContainer: {
-		flex: 3,
-	},
-
-
 	// Bottom Buttons
 	// - リストビューにかぶせる感じで試す
-	bottomButtons: {
+	bottomFloater: {
 		position: "absolute",
 		bottom: 5,
 		left: 0,
@@ -123,6 +107,5 @@ const styles = StyleSheet.create({
 
 		// backgroundColor: '#eff',
 	},
-
 
 });

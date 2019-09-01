@@ -22,13 +22,16 @@ export default class Actors extends Array<IActor> {
 		// DEBUG: モックデータを返す
 		const mock: Actors = new Actors()
 		mock.push(
-			new Actor(1, 'actor1', skillMaster, [1, 4]),
-			new Actor(2, 'acror2', skillMaster, [2]),
-			new Actor(3, 'actor3', skillMaster, [3]),
-			new Actor(4, 'actor4', skillMaster, [3]),
-			new Actor(5, 'actor5', skillMaster, [3]),
-			new Actor(6, 'actor6', skillMaster, [3]),
-			new Actor(7, 'actor7', skillMaster, [3]),
+			new Actor(1, 'アリス', skillMaster, [1, 4]),
+			new Actor(2, 'イリス', skillMaster, [2]),
+			new Actor(3, 'ウル', skillMaster, [3]),
+			new Actor(4, 'エル', skillMaster, [4]),
+			new Actor(5, 'オーリス', skillMaster, [3]),
+			new Actor(6, 'カレン', skillMaster, [2,3]),
+			new Actor(7, 'キラ', skillMaster, [1,3]),
+			new Actor(8, 'クリス', skillMaster, [1,2,3]),
+			new Actor(9, 'ケイ', skillMaster, [1,2,3,4]),
+			new Actor(10,'コリン', skillMaster, [1,2]),
 		);
 
 		mock.forEach((data) => { this.push(data) })

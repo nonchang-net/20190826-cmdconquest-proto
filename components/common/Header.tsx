@@ -6,16 +6,15 @@
  * 	 - コマコンでは食料リソースがスタミナに当たるので、ここに出すことになりそう
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	StyleSheet,
 	View,
 	Text,
-	SafeAreaView,
 	Image,
-	Button,
 	ViewStyle,
 } from 'react-native'
+import AppAssets from '../../AppAssets';
 
 interface IProps{
 	style: ViewStyle
@@ -27,7 +26,7 @@ export default (props: IProps) => {
 		<View style={props.style} >
 			<Image
 				style={styles.headerImage}
-				source={require('../assets/backgrounds/32850890c89814227530f4d4b5d053d8.png')}
+				source={AppAssets.background}
 			/>
 			<Text style={styles.headerTextTest}>Command Conquest Proto: ver 2019.0831.1828</Text>
 			<Text style={styles.headerTextTest2}>status: {props.statusText}</Text>

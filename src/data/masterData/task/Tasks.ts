@@ -18,7 +18,7 @@ export default class Tasks extends Array<ITaskRule> {
 	public async AsyncSetup(): Promise<Tasks> {
 
 		// DEBUG: ランダムに待つ
-		await Utils.Sleep(1000 * Math.random())
+		// await Utils.Sleep(1000 * Math.random())
 
 		const firstTask: ITaskRule = {
 			id: 10,

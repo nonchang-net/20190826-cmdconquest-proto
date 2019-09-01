@@ -1,21 +1,24 @@
+/**
+ * App.tsx
+ * - エントリポイント
+ * - 責務検討中
+ */
 import React from 'react';
 import {
 	StyleSheet,
-	View,
 	SafeAreaView,
 } from 'react-native'
 import MasterData from './src/data/MasterData'
-import Actors from './src/data/masterData/actor/Actors';
-import MainViewSwitch, { ViewState } from './components/MainViewSwitch';
-import { ButtonKind } from './components/BottomButtons';
-
+import Actors from './src/data/masterData/actor/Actors'
+import MainViewSwitch, { ViewState } from './components/common/MainViewSwitch'
+import { ButtonKind } from './components/common/BottomButtons'
 
 export default () => {
 
 	var initialized: Boolean = false;
 
 	const masterData: MasterData = new MasterData()
-	const [statusText, setStatusText] = React.useState('hello!')
+	const [statusText, setStatusText] = React.useState('initializing...')
 	const [actors, setActors] = React.useState(new Actors)
 	const [viewState, setViewState] = React.useState(ViewState.Loading)
 
@@ -24,11 +27,11 @@ export default () => {
 	// TODO: この書き方はreact的じゃない気がする。初期状態をローディング表示にして宣言的に繊維させたい？ 要確認
 	async function initializeAsync() {
 
-		setStatusText('now loading...')
 		await masterData.asyncSetup()
-		setStatusText('loading finished! 2')
 
-		console.log(`initializeAsync(): actors.length = ${masterData.AllActors.length}`)
+		setStatusText('ACTORマスター一覧')
+
+		// console.log(`initializeAsync(): actors.length = ${masterData.AllActors.length}`)
 
 		setActors(masterData.AllActors)
 
@@ -73,17 +76,13 @@ export default () => {
 
 	return (
 
-		<SafeAreaView style={{flex:1}}>
-
-			<View style={styles.container}>
-				<MainViewSwitch
-					viewState={viewState}
-					actors={actors}
-					statusText={statusText}
-					onClicked={onBottomButtonClicked}
-				/>
-			</View>
-
+		<SafeAreaView style={styles.container}>
+			<MainViewSwitch
+				viewState={viewState}
+				actors={actors}
+				statusText={statusText}
+				onClicked={onBottomButtonClicked}
+			/>
 		</SafeAreaView>
 	);
 

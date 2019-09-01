@@ -53,7 +53,7 @@ export default class MasterData {
 		// ])
 
 		// DEBUG: 読み込み遅延エミュレーション
-		await Utils.Sleep(1000)
+		// await Utils.Sleep(1000)
 
 		this.skills = await new Skills().AsyncSetup() 
 			// UNDONE: 要調査: 上のAsyncSetupはnewした直後にしか呼べない。

@@ -37,7 +37,7 @@ export default class Skills extends Array<ISkillRule> {
 		})
 
 		// this.concat(mock) // UNDONE: 要調査: これではthis.lengthが0。extends Array<ISkillRule>では期待した結果にならない模様？
-		mock.forEach((skill) => { this.push(skill) }) // これは正常。lengthが5になる
+		mock.forEach((skill) => { this.push(skill) }) // これは正常。lengthが増える
 
 		// console.log(`Skills: this.length = ${this.length} (mock = ${mock.length})`)
 

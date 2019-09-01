@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+/**
+ * BottomButton.tsx
+ * - アウトゲーム中の大項目移動に当たるボタン
+ * - iPhoneSEサイズを想定し、三つを限界と考えて余裕を持って並べておく
+ */
+import React from 'react';
 import {
 	StyleSheet,
 	View,
