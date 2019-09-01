@@ -17,7 +17,13 @@ interface IProps{
 	bottomFloaterStyle: ViewStyle
 	actors: Actors
 	statusText: string
-	onClicked: (kind:ButtonKind) => void
+	onClicked: (kind: ButtonKind) => void
+	
+	level: number
+	currentExp: number
+	nextExp: number
+	currentFood: number
+	maxFood: number
 }
 
 export default (props: IProps) => {
@@ -26,6 +32,12 @@ export default (props: IProps) => {
 			<Header
 				style={styles.header}
 				statusText={props.statusText}
+
+				level={props.level}
+				currentExp={props.currentExp}
+				nextExp={props.nextExp}
+				currentFood={props.currentFood}
+				maxFood={props.maxFood}
 			/>
 			<ActorMasterList
 				style={styles.list}

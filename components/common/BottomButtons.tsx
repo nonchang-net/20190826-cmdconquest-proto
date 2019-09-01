@@ -32,7 +32,7 @@ export default (props:IProps) => {
 					onPress={() => {
 						props.onClicked(ButtonKind.Kind1)
 					}}
-					title="btn1"
+					title="Home"
 				/>
 			</View>
 
@@ -41,7 +41,7 @@ export default (props:IProps) => {
 					onPress={() => {
 						props.onClicked(ButtonKind.Kind2)
 					}}
-					title="btn2"
+					title="食料+"
 				/>
 			</View>
 
@@ -50,7 +50,7 @@ export default (props:IProps) => {
 					onPress={() => {
 						props.onClicked(ButtonKind.Kind3)
 					}}
-					title="btn3"
+					title="Exp+"
 				/>
 			</View>
 

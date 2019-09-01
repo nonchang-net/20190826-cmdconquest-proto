@@ -5,31 +5,40 @@
  * - クライアント保存で済むデータは必要に応じてローカルストレージ保存
  * - アイテムのmasterDataIdを持たせるケースなど、
  * 		ユーザーデータ自体からマスターデータを参照することがよくあるので、
- * 		コンストラクタインジェクションでMasterDataを渡している。
+ * 		初期化時injectでMasterDataを渡している。
  * 		（なおこのサンプルで実例があるかどうかは不明。というかなさそう）
  */
 
 // import { ReactiveProperty } from '../common/Event';
 // import GameStateKind from './GameStateKind';
 import MasterData from './MasterData';
-import InventoryData from './userData/InventoryData';
+import InventoryData, {
+	InventoryDataWithQuantity,
+	Kind as InventoryKind,
+	InventoryDataWithQuantityAndMax,
+} from './userData/InventoryData';
 
 
 export default class UserData extends Array<InventoryData> {
 
+	private master!: MasterData
+
+	private food!: InventoryData
+	public get Food(): InventoryData { return this.food }
+
 	// public get AllInventories(): InventoryData[] {
 	// 	return this.Inventories;
 	// }
-	// private Inventories: InventoryData[] = [];
 
-	// constructor(master: MasterData) {
-	// }
+	public async asyncSetup(master: MasterData): Promise<UserData> {
+		this.master = master
 
-	// public Save() {
-	// 	// TODO: ハイスコア保存
-	// }
+		// TODO: 前回終了時のデータ読み込み: Expoだと何が使えるんだろ？
 
-	// private Load() {
-	// 	// TODO: ハイスコア読み込み
-	// }
+		// 食料初期化
+		this.food = new InventoryDataWithQuantityAndMax(InventoryKind.Food, 0, 100);
+		this.push(this.food)
+
+		return this
+	}
 }

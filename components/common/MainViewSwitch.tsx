@@ -17,7 +17,13 @@ interface IProps{
 	viewState: ViewState
 	actors: Actors
 	statusText: string
-	onClicked: (kind:ButtonKind) => void
+	onClicked: (kind: ButtonKind) => void
+	
+	level: number
+	currentExp: number
+	nextExp: number
+	currentFood: number
+	maxFood: number
 }
 
 export enum ViewState{
@@ -45,6 +51,12 @@ export default (props:IProps) => {
 					actors={props.actors}
 					statusText={props.statusText}
 					onClicked={props.onClicked}
+
+					level={props.level}
+					currentExp={props.currentExp}
+					nextExp={props.nextExp}
+					currentFood={props.currentFood}
+					maxFood={props.maxFood}
 				/>
 			)
 		
